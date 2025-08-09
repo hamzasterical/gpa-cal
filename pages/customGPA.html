@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPA CAL</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="../img/GPA.png" id="logo">
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="../pages/customGPA.html">BSCS@UET</a>
+      <a href="../pages/target_cgpa.html">Dream CGPA</a>
+    </div>
+  </div>
+
+  <div>
+    <p class="toptext">Use this calculator to calculate grade point average (GPA) and generate a GPA report. If you use percentage grades, have grades on a different scale or in high school with AP/IB classes, please change the "Settings" to input specific values. Also use the settings to group courses into semesters or to include past GPA.</p>
+  </div>
+
+
+  <div class="container select-container">
+    <select class="form-select form-control" id="selectSem">
+      <option selected disabled>Choose Semester</option>
+      <option value="1">1st semester</option>
+      <option value="2">2nd semester</option>
+      <option value="3">3rd semester</option>
+      <option value="4">4th semester</option>
+      <!--
+      <option value="5">5th semester</option>
+      <option value="6">6th semester</option>
+      <option value="7">7th semester</option>
+      <option value="8">8th semester</option> -->
+    </select>
+  </div>
+
+  <div class="center-container">
+      <button class="btn btn-primary buttons" id="selection" onclick="generateTable()">Select</button>
+  </div>
+
+  <div class="container">
+    <table id="inputtable" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Subject Name</th>
+          <th>Credit Hours (CH)</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody id="semesters">
+      </tbody>
+    </table>
+  </div>
+
+  <div class="center-container">
+    <button class="btn btn-primary buttons" id="calculate" onclick="calc_GPA()">Calculate</button>
+  </div>
+
+  <div class="resultbox" id="resultbox">
+    <h4 id="result">Your Result here</h4>
+  </div>
+
+  <div class="para">
+    <p>Grade Point Average (GPA) is a standard measure of a student's academic performance at UET Lahore. It is calculated by averaging the grade points earned in each course, weighted by the number of credit hours. While grading systems can differ across universities and departments, UET follows an HEC-approved letter grading system. This calculator supports both letter grades and numerical marks, converting them into grade points using UET’s official scale, as shown below.</p>
+    <p>A+ = 4.3 grade points<br>
+       A = 4 grade points<br>
+       A- = 3.7 grade points<br>
+       B+ = 3.3 grade points<br>
+       B = 3 grade points<br>
+       B- = 2.7 grade points<br>
+       C+ = 2.3 grade points<br>
+       C = 2 grade points<br>
+       C- = 1.7 grade points<br>
+       D+ = 1.3 grade points<br>
+       D = 1 grade point<br>
+       D- = 0.7 grade points<br>
+       F = 0 grade points<br>
+       P (pass), NP (not pass), I (incomplete), W (withdrawal) will be ignored.</p>
+
+    <p>Departments at UET Lahore use a GPA system based on letter grades such as A, B, C, D, and F, in line with the HEC grading policy. However, grading criteria may vary slightly between departments. For example, what percentage qualifies as an A or B can differ. UET does not typically use intermediate grades like A+ or B-, but some departments may assign different weightages to specific courses, especially core or lab-intensive subjects. This GPA calculator takes such variations into account by letting you assign credit hours to each course, which reflect the course’s importance or "weight" in your overall GPA.</p>
+  </div>
+
+  <footer>
+    <div class="f-container">
+      <div class="footer-content">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="">About the Dev</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Documentation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-content">
+      <h3>Sources</h3>
+      <ul>
+        <li>
+          <a href="https://github.com/your-username/your-repo" target="_blank" style="font-size: 30px; color: white;">
+              <i class="fab fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/your-username/your-repo" target="_blank" style="font-size: 30px; color: white;">
+              <i class="fas fa-file-alt"></i>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+    </div>
+    
+  </footer>
+  <!-- JavaScript: Fixed logic for generateTable -->
+  
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="../js/custom.js"></script>
+</body>
+</html>
