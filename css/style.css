@@ -5,48 +5,64 @@ html {
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 0;
+  padding: 0;
 }
 
 /* Navbar */
 .navbar {
-  background: #000080;
+  background-color: #000080;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-}
-
-.navlinks {
-  display: flex;
-  gap: 15px;
-}
-
-.navlinks a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-}
-
-.navlinks a:hover {
-  background: rgba(255,255,255,0.2);
+  flex-wrap: wrap;
 }
 
 #logo {
   height: 60px;
 }
 
-/* Layout */
+.navlinks {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navlinks a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.navlinks a:hover {
+  background-color: #575757;
+}
+
+/* Content */
 .container {
   margin-top: 30px;
 }
 
-.para,
 .toptext {
-  background: #f9f9f9;
+  margin: 20px;
+}
+
+.para {
+  margin: 20px;
   padding: 20px;
+  max-width: 100%;
+  background-color: #f9f9f9;
   border-left: 4px solid #000080;
-  margin-bottom: 20px;
+}
+
+/* Tables */
+.table {
+  margin-bottom: 0;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
 }
 
 /* Buttons */
@@ -57,32 +73,50 @@ body {
 .center-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 15px;
   flex-wrap: wrap;
   margin: 20px 0;
 }
 
+/* Inputs */
+.primes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.boxes {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 /* Result */
 .resultbox {
-  background: #9cffdb;
   padding: 20px;
   margin: 20px auto;
-  width: 100%;
+  background-color: #9cffdb;
+  width: 90%;
   max-width: 500px;
   text-align: center;
+}
+
+.resultbox h4 {
+  color: darkgreen;
 }
 
 /* Footer */
 footer {
   background: #343434;
-  padding: 30px;
-  margin-top: 40px;
+  padding: 40px 20px;
 }
 
 .f-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .footer-content h3,
@@ -91,19 +125,30 @@ footer {
   text-align: center;
 }
 
-/* Mobile */
+.footer-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Mobile fixes */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
+    text-align: center;
   }
 
   .navlinks {
-    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    align-items: center;
   }
 
-  table {
-    font-size: 14px;
+  .boxes {
+    flex-direction: column;
+  }
+
+  .toptext,
+  .para {
+    margin: 15px;
+    padding: 15px;
   }
 }
