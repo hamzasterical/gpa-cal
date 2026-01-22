@@ -17,7 +17,7 @@ function generateTable()
                   ["Applied Phy", 2],
                   ["Applied Phy-Lab",1],
                   ["DiscreteMath", 3],
-                  ["Calculus", 3]];
+                  ["Calculus-I", 3]];
 
 
       let sem2 = [["OOP",3],
@@ -33,9 +33,9 @@ function generateTable()
 
         let sem3 = [["DSA",3],
                   ["DSA-Lab",1],
-                  ["Computer Networks", 3],
+                  ["Computer Networks", 2],
                   ["Computer Networks-Lab", 1],
-                  ["Software Eng",1],
+                  ["Software Eng",3],
                   ["Software Eng-Lab", 1],
                   ["Functional English", 3],
                   ["Islamic Studies/Ethics", 3]];
@@ -50,27 +50,27 @@ function generateTable()
                   ["D&A of Algorithms",3],
                   ["Information Security", 2],
                   ["TQ-II", 1]];
-/*
-        let sem5 = [["OS",2],
-                  ["OS-Lab",1],
-                  ["Intro to Programming-DS",3],
+
+        let sem5 = [["Machine Learning",3],
+                  ["Deep Learning",3],
                   ["Intro to Human-Computer Interaction", 3],
-                  ["Computer Architecture", 1],
-                  ["Elective Course-I",3],
-                  ["Elective Course-II",3],
-                  ["\"Social Sciences\"", 2],
-                  ["TQ-II", 1]];
+                  ["Computer Architecture", 3],
+                  ["OS",3],
+                  ["OS-lab",1],
+                  ];
+
+        let sem7 = [["Machine Learning",3],["Deep Learning",3],["Compiler Construction",3],["Compiler Constr.-Lab",3],["IS & PS", 2],["FYP-1",2]]
                  
-*/
+
       switch (sem) {
         case 1: count = 8; selected_sem=sem1 ; break;
         case 2: count = 10; selected_sem=sem2; break;
         case 3: count = 8; selected_sem=sem3; break;
         case 4: count = 10; selected_sem=sem4 ;break;
-        /*case 5: count = 8; break;
-        case 6: count = 2; break;
+        case 5: count = 8; break;
+       // case 6: count = 2; break;
         case 7: count = 8; break;
-        case 8: count = 2; break;*/
+       // case 8: count = 2; break;
         default:
           alert("Please select a valid semester");
           return;
@@ -100,68 +100,62 @@ function generateTable()
               <option>D</option>
               <option>D-</option>
               <option>F</option>
+              <option>NiLL on LMS</option>
             </select>
           </td>`;
         tbody.appendChild(row);
       }
 }
 
-function calc_GPA(){
- const points = {
-  "A+" : 4.3,
-  "A"  : 4.0,
-  "A-" : 3.7,
-  "B+" : 3.3,
-  "B"  : 3.0,
-  "B-" : 2.7,
-  "C+" : 2.3,
-  "C"  : 2.0,
-  "C-" : 1.7,
-  "D+" : 1.3,
-  "D"  : 1.0,
-  "D-" : 0.7,
-  "F"  : 0.0 };
+function calc_GPA() {
+  const points = {
+    "A+": 4.0,
+    "A": 4.0,
+    "A-": 3.7,
+    "B+": 3.3,
+    "B": 3.0,
+    "B-": 2.7,
+    "C+": 2.3,
+    "C": 2.0,
+    "C-": 1.7,
+    "D+": 1.3,
+    "D": 1.0,
+    "D-": 0.7,
+    "F": 0.0
+  };
 
   const tablebody = document.getElementById("semesters");
   const rows = tablebody.getElementsByTagName("tr");
-  const stud_data = [];
 
-  for(let i=0;i<rows.length;i++)
-  {
+  let total_credits = 0;
+  let total_score = 0;
+
+  for (let i = 0; i < rows.length; i++) {
     const cells = rows[i].getElementsByTagName("td");
-    if (cells.length>=3)
-    {
-      
-      const subject = cells[0].querySelector("input").value.trim();
-      const ch = parseFloat(cells[1].querySelector("input").value.trim());
-      const grade = cells[2].querySelector("select").value.trim().toUpperCase();
 
-      if (!points.hasOwnProperty(grade) || isNaN(ch)) {
-        alert(`Invalid data in row ${i + 1}`);
-        return;
-      }
+    const ch = parseFloat(cells[1].querySelector("input").value);
+    const grade = cells[2].querySelector("select").value;
 
-      stud_data.push({ subject, ch, grade });
-      stud_data.push({ subject, ch, grade });
-
+    if (grade === "NiLL on LMS") {
+      continue;
     }
+
+    if (!points.hasOwnProperty(grade) || isNaN(ch)) {
+      alert(`Invalid data in row ${i + 1}`);
+      return;
+    }
+
+    total_credits += ch;
+    total_score += points[grade] * ch;
   }
 
-  var total_credits = 0;
-  var scores = 0;
-  for (let j=0; j<stud_data.length; j++)
-  {
-    const gp = points[stud_data[j].grade];
-    total_credits+=stud_data[j].ch;
-    scores += gp*stud_data[j].ch;
+  if (total_credits === 0) {
+    alert("No valid grades to calculate GPA");
+    return;
   }
 
-  var GPA = scores/total_credits;
-  var rgpa = GPA.toFixed(2);
-  
-  document.getElementById("result").innerText = `Your GPA is ${rgpa}`;
-  document.getElementById("resultbox").scrollIntoView({behavior : "smooth"});
-  
-
+  const GPA = (total_score / total_credits).toFixed(2);
+  document.getElementById("result").innerText = `Your GPA is ${GPA}`;
+  document.getElementById("resultbox").scrollIntoView({ behavior: "smooth" });
 }
 
