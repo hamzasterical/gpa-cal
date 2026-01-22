@@ -2,31 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dream CGPA</title>
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <header class="navbar">
-  <img src="../img/GPA.png" id="logo">
-  <nav class="navlinks">
+  <img src="../img/GPA.png" id="logo" alt="GPA Logo">
+  <div class="navlinks">
     <a href="../index.html">Home</a>
     <a href="../pages/customGPA.html">BSCS@UET</a>
     <a href="../pages/target_cgpa.html">Dream CGPA</a>
-  </nav>
+  </div>
 </header>
 
 <section class="container">
   <p class="para">
-    Calculate the GPA you must score in the next semester to achieve your desired CGPA.
+    This calculator can be used to calculate the GPA you must achieve in order to attain a particular CGPA.
   </p>
 
   <div class="form-group">
-    <select class="form-control" id="sem">
-      <option disabled selected>Upcoming Semester</option>
+    <select class="form-control" id="sem" required>
+      <option value="" selected disabled>Choose upcoming Semester</option>
       <option value="1">2nd Semester</option>
       <option value="2">3rd Semester</option>
       <option value="3">4th Semester</option>
@@ -37,21 +37,21 @@
     </select>
   </div>
 
-  <div class="primes">
-    <input class="form-control" type="number" id="dgpa" placeholder="Dream CGPA">
-    <input class="form-control" type="number" id="fch" placeholder="Next Semester CH">
+  <div class="primes boxes">
+    <input type="number" step="0.01" min="0" max="4" id="dgpa" class="form-control" placeholder="Enter your Dream CGPA" required>
+    <input type="number" min="1" id="fch" class="form-control" placeholder="Enter CH of Next Semester" required>
   </div>
 
   <div class="center-container">
-    <button class="btn btn-primary" onclick="dream()">Load Rows</button>
+    <button class="btn btn-primary" id="loadrows" onclick="dream()">Load Rows</button>
   </div>
 
-  <div class="table-responsive">
+  <div class="table-responsive container">
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Previous GPA</th>
-          <th>Previous CH</th>
+          <th>Previous Sem's GPA</th>
+          <th>Previous Sem's CH</th>
         </tr>
       </thead>
       <tbody id="sems"></tbody>
@@ -59,10 +59,10 @@
   </div>
 
   <div class="center-container">
-    <button class="btn btn-success" onclick="calculate()">Calculate</button>
+    <button class="btn btn-success" id="calculate" onclick="calculate()">Calculate</button>
   </div>
 
-  <div class="resultbox">
+  <div class="resultbox" id="resultbox">
     <h4 id="result">Your Result here</h4>
   </div>
 </section>
@@ -72,12 +72,24 @@
     <div class="footer-content">
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="#">About</a></li>
+        <li><a href="https://www.linkedin.com/in/hamza-ali-5969712b2/" target="_blank">About the Dev</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="https://vercel.com/">Vercel</a></li>
+      </ul>
+    </div>
+    <div class="footer-content">
+      <h3>Sources</h3>
+      <ul>
+        <li><a href="https://github.com/hamzasterical/gpa-cal.git" target="_blank" style="font-size:30px;color:white"><i class="fab fa-github"></i></a></li>
+        <li><a href="../gcd.pdf" target="_blank" style="font-size:30px;color:white"><i class="fas fa-file-alt"></i></a></li>
       </ul>
     </div>
   </div>
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="../js/dream.js"></script>
 </body>
 </html>

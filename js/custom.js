@@ -60,7 +60,7 @@ function generateTable() {
     ["Deep Learning", 3],
     ["Intro to HCI", 3],
     ["Computer Architecture", 3],
-    ["OS", 3],
+    ["OS", 2],
     ["OS-Lab", 1]
   ];
 
