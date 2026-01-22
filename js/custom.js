@@ -37,7 +37,7 @@ function generateTable() {
     ["Computer Networks", 2],
     ["Computer Networks-Lab", 1],
     ["Software Eng", 3],
-    ["Software Eng-Lab", 1],
+    ["Linear ALgebra", 3],
     ["Functional English", 3],
     ["Islamic Studies/Ethics", 3]
   ];
