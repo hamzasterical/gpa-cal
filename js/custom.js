@@ -15,7 +15,8 @@ function generateTable() {
     ["Applied Phy", 2],
     ["Applied Phy-Lab", 1],
     ["DiscreteMath", 3],
-    ["Calculus-I", 3]
+    ["Calculus-I", 3],
+    ["Basic Maths", 3]
   ];
 
   const sem2 = [
