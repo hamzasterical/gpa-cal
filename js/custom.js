@@ -44,15 +44,16 @@ function generateTable() {
   ];
 
   const sem4 = [
-    ["CO & Assembly", 2],
-    ["CO & Assembly-Lab", 1],
+    ["COAL", 2],
+    ["COAL-Lab", 1],
     ["AI", 2],
     ["AI-Lab", 1],
-    ["Theory of Automata", 3],
+    ["Theory of Automata", 2],
     ["Advanced DB", 2],
     ["Advanced DB-Lab", 1],
     ["D&A of Algorithms", 3],
     ["Information Security", 2],
+    ["Information Security-Lab", 2],
     ["TQ-II", 1]
   ];
 
