@@ -48,12 +48,12 @@ function generateTable() {
     ["COAL-Lab", 1],
     ["AI", 2],
     ["AI-Lab", 1],
-    ["Theory of Automata", 2],
+    ["Theory of Automata", 3],
     ["Advanced DB", 2],
     ["Advanced DB-Lab", 1],
     ["D&A of Algorithms", 3],
     ["Information Security", 2],
-    ["Information Security-Lab", 2],
+    ["Information Security-Lab", 1],
     ["TQ-II", 1]
   ];
 
