@@ -3,6 +3,8 @@
       for (let i = 0; i < 7; i++) {
         addRow();
       }
+      restoreIndexData();
+      setupIndexAutoSave();
     });
 
     // Add a new row to the table
@@ -34,6 +36,9 @@
       `;
 
       tbody.appendChild(row);
+      if (typeof Persist !== 'undefined') {
+        Persist.save("gpa_index_rows", getIndexTableData());
+      }
     }
 
     // Calculate GPA based on entered values
@@ -76,4 +81,41 @@
       
       document.getElementById("gpaResult").innerText = `Your GPA is: ${gpa}`;
       document.getElementById("resultbox").scrollIntoView({behavior : "smooth"});
+    }
+
+    function getIndexTableData() {
+      return Array.from(document.querySelectorAll("#semesters tr")).map(row => {
+        const inputs = row.querySelectorAll("input");
+        const select = row.querySelector("select");
+        return {
+          name: inputs[0].value,
+          credit: inputs[1].value,
+          grade: select.value
+        };
+      });
+    }
+
+    function restoreIndexData() {
+      const data = Persist.load("gpa_index_rows");
+      if (!data) return;
+      const tbody = document.getElementById("semesters");
+      while (tbody.children.length < data.length) {
+        addRow();
+      }
+      Array.from(tbody.querySelectorAll("tr")).forEach((row, i) => {
+        if (i < data.length) {
+          const inputs = row.querySelectorAll("input");
+          const select = row.querySelector("select");
+          inputs[0].value = data[i].name;
+          inputs[1].value = data[i].credit;
+          select.value = data[i].grade;
+        }
+      });
+    }
+
+    function setupIndexAutoSave() {
+      const tbody = document.getElementById("semesters");
+      const save = () => Persist.save("gpa_index_rows", getIndexTableData());
+      tbody.addEventListener("input", save);
+      tbody.addEventListener("change", save);
     }

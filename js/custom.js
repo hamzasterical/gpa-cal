@@ -1,3 +1,5 @@
+const CUSTOM_KEY = "gpa_custom_data";
+
 function generateTable() {
   const sem = parseInt(document.getElementById("selectSem").value);
   const tbody = document.getElementById("semesters");
@@ -6,6 +8,8 @@ function generateTable() {
     alert("Select a semester first");
     return;
   }
+
+  saveCustomGrades();
 
   const sem1 = [
     ["PF", 3],
@@ -117,7 +121,46 @@ function generateTable() {
     `;
     tbody.appendChild(row);
   });
+
+  const data = Persist.load(CUSTOM_KEY) || {};
+  data.semester = sem;
+  Persist.save(CUSTOM_KEY, data);
+
+  restoreCustomGrades();
 }
+
+function saveCustomGrades() {
+  const data = Persist.load(CUSTOM_KEY) || {};
+  const rows = document.querySelectorAll("#semesters tr");
+  if (rows.length > 0 && data.semester) {
+    if (!data.gradesBySem) data.gradesBySem = {};
+    data.gradesBySem[data.semester] = Array.from(rows).map(row => row.querySelector("select").value);
+    Persist.save(CUSTOM_KEY, data);
+  }
+}
+
+function restoreCustomGrades() {
+  const data = Persist.load(CUSTOM_KEY);
+  if (!data || !data.gradesBySem) return;
+  const grades = data.gradesBySem[data.semester];
+  if (!grades) return;
+  const rows = document.querySelectorAll("#semesters tr");
+  rows.forEach((row, i) => {
+    if (i < grades.length) {
+      row.querySelector("select").value = grades[i];
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const data = Persist.load(CUSTOM_KEY);
+  if (data && data.semester) {
+    document.getElementById("selectSem").value = data.semester;
+    generateTable();
+  }
+  const tbody = document.getElementById("semesters");
+  tbody.addEventListener("change", saveCustomGrades);
+});
 
 function calc_GPA() {
   const points = {
