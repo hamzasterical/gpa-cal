@@ -19,53 +19,55 @@
   </div>
 </header>
 
-<section class="container">
-  <p class="para">
-    This calculator can be used to calculate the GPA you must achieve in order to attain a particular CGPA.
-  </p>
+<main>
+  <section class="container">
+    <p class="para">
+      This calculator can be used to calculate the GPA you must achieve in order to attain a particular CGPA.
+    </p>
 
-  <div class="form-group">
-    <select class="form-control" id="sem" required>
-      <option value="" selected disabled>Choose upcoming Semester</option>
-      <option value="1">2nd Semester</option>
-      <option value="2">3rd Semester</option>
-      <option value="3">4th Semester</option>
-      <option value="4">5th Semester</option>
-      <option value="5">6th Semester</option>
-      <option value="6">7th Semester</option>
-      <option value="7">8th Semester</option>
-    </select>
-  </div>
+    <div class="form-group">
+      <select class="form-control" id="sem" required>
+        <option value="" selected disabled>Choose upcoming Semester</option>
+        <option value="1">2nd Semester</option>
+        <option value="2">3rd Semester</option>
+        <option value="3">4th Semester</option>
+        <option value="4">5th Semester</option>
+        <option value="5">6th Semester</option>
+        <option value="6">7th Semester</option>
+        <option value="7">8th Semester</option>
+      </select>
+    </div>
 
-  <div class="primes boxes">
-    <input type="number" step="0.01" min="0" max="4" id="dgpa" class="form-control" placeholder="Enter your Dream CGPA" required>
-    <input type="number" min="1" id="fch" class="form-control" placeholder="Enter CH of Next Semester" required>
-  </div>
+    <div class="primes boxes">
+      <input type="number" step="0.01" min="0" max="4" id="dgpa" class="form-control" placeholder="Enter your Dream CGPA" required>
+      <input type="number" min="1" id="fch" class="form-control" placeholder="Enter CH of Next Semester" required>
+    </div>
 
-  <div class="center-container">
-    <button class="btn btn-primary" id="loadrows" onclick="dream()">Load Rows</button>
-  </div>
+    <div class="center-container">
+      <button class="btn btn-primary" id="loadrows" onclick="dream()">Load Rows</button>
+    </div>
 
-  <div class="table-responsive container">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Previous Sem's GPA</th>
-          <th>Previous Sem's CH</th>
-        </tr>
-      </thead>
-      <tbody id="sems"></tbody>
-    </table>
-  </div>
+    <div class="table-responsive container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Previous Sem's GPA</th>
+            <th>Previous Sem's CH</th>
+          </tr>
+        </thead>
+        <tbody id="sems"></tbody>
+      </table>
+    </div>
 
-  <div class="center-container">
-    <button class="btn btn-success" id="calculate" onclick="calculate()">Calculate</button>
-  </div>
+    <div class="center-container">
+      <button class="btn btn-success" id="calculate" onclick="calculate()">Calculate</button>
+    </div>
 
-  <div class="resultbox" id="resultbox">
-    <h4 id="result">Your Result here</h4>
-  </div>
-</section>
+    <div class="resultbox" id="resultbox">
+      <h4 id="result">Your Result here</h4>
+    </div>
+  </section>
+</main>
 
 <footer>
   <div class="f-container">
@@ -80,8 +82,8 @@
     <div class="footer-content">
       <h3>Sources</h3>
       <ul>
-        <li><a href="https://github.com/hamzasterical/gpa-cal.git" target="_blank" style="font-size:30px;color:white"><i class="fab fa-github"></i></a></li>
-        <li><a href="../gcd.pdf" target="_blank" style="font-size:30px;color:white"><i class="fas fa-file-alt"></i></a></li>
+        <li><a href="https://github.com/hamzasterical/gpa-cal.git" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="../gcd.pdf" target="_blank"><i class="fas fa-file-alt"></i></a></li>
       </ul>
     </div>
   </div>
